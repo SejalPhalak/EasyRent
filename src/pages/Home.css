@@ -1,9 +1,20 @@
+/* Hero section with background image and dark overlay */
 .hero-box {
-  background-color: #f8f9fa;
-  padding: 80px 20px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 100px 20px;
   border-bottom: 1px solid #eee;
 }
 
+/* Force text to be white inside hero box for visibility */
+.hero-box h1, 
+.hero-box p {
+  color: #ffffff !important;
+}
+
+/* Center and size the search bar */
 .search-bar {
-  max-width: 500px;
+  max-width: 600px;
 }

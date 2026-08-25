@@ -1,41 +1,45 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logoImg from '../assets/logo.png'; 
 
 function Navbar() {
   return (
-    // simple bootstrap navbar with shadow
     <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3">
       <div className="container">
         
-        {/* logo */}
-        <Link className="navbar-brand fw-bold fs-4" to="/">
+        <Link className="navbar-brand fw-bold fs-4 d-flex align-items-center" to="/">
+          {/* Logo Fix: Removed width, added objectFit and mixBlendMode */}
+          <img 
+            src={logoImg} 
+            alt="EasyRent Logo" 
+            height="45" 
+            className="me-2" 
+            style={{ objectFit: 'contain', mixBlendMode: 'multiply' }} 
+          />
           Easy<span className="text-primary">Rent</span>
         </Link>
-
-        {/* mobile menu button */}
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
           <span className="navbar-toggler-icon"></span>
         </button>
-
-        {/* nav links */}
-        <div className="collapse navbar-collapse justify-content-end" id="navMenu">
-          <ul className="navbar-nav align-items-center gap-3">
+        
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav ms-auto align-items-center">
             <li className="nav-item">
-              <Link className="nav-link text-dark" to="/">Home</Link>
+              <Link className="nav-link fw-semibold px-3" to="/">Home</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link text-dark" to="/properties">Properties</Link>
+              <Link className="nav-link fw-semibold px-3" to="/properties">Properties</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link text-dark" to="/about">About</Link>
+              <Link className="nav-link fw-semibold px-3" to="/about">About</Link>
             </li>
             <li className="nav-item">
-              {/* updated login button to act as a router link */}
-              <Link to="/login" className="btn btn-primary rounded-pill px-4">Login</Link>
+              <Link className="btn btn-primary rounded-pill px-4 ms-2" to="/login">Login</Link>
             </li>
           </ul>
         </div>
-
+        
       </div>
     </nav>
   );

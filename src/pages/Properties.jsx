@@ -1,29 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import PropertyCard from '../components/PropertyCard';
 
+// Importing all 6 images from assets folder
+import house1 from '../assets/house1.jpg';
+import house2 from '../assets/house2.jpg';
+import house3 from '../assets/house3.jpg';
+import house4 from '../assets/house4.jpg';
+import house5 from '../assets/house5.jpg';
+import house6 from '../assets/house6.jpg';
+
 function Properties() {
   const [searchTerm, setSearchTerm] = useState('');
-  
-  // state to handle loading effect
   const [isLoading, setIsLoading] = useState(true);
 
+  // Property list with local images
   const allProperties = [
-    { id: 1, title: "Skyline Studio", location: "College Road, Nashik", price: "18,000", bgColor: "#FFD1DC" },
-    { id: 2, title: "Tech Villa", location: "Gangapur Road, Nashik", price: "35,000", bgColor: "#B0E0E6" },
-    { id: 3, title: "Cozy Home", location: "Indira Nagar, Nashik", price: "14,500", bgColor: "#E6E6FA" },
-    { id: 4, title: "City Apartment", location: "City Centre, Nashik", price: "20,000", bgColor: "#FFE4E1" },
-    { id: 5, title: "Green Park Flat", location: "Pathardi Phata, Nashik", price: "12,000", bgColor: "#F0FFF0" },
-    { id: 6, title: "Luxury Duplex", location: "Mahatma Nagar, Nashik", price: "40,000", bgColor: "#FFF0F5" }
+    { id: 1, title: "Skyline Studio", location: "College Road, Nashik", price: "18,000", image: house1 },
+    { id: 2, title: "Tech Villa", location: "Gangapur Road, Nashik", price: "35,000", image: house2 },
+    { id: 3, title: "Cozy Home", location: "Indira Nagar, Nashik", price: "14,500", image: house3 },
+    { id: 4, title: "City Apartment", location: "City Centre, Nashik", price: "20,000", image: house4 },
+    { id: 5, title: "Green Park Flat", location: "Pathardi Phata, Nashik", price: "12,000", image: house5 },
+    { id: 6, title: "Luxury Duplex", location: "Mahatma Nagar, Nashik", price: "40,000", image: house6 }
   ];
 
-  // using useEffect to simulate API data fetching delay
   useEffect(() => {
     const timer = setTimeout(() => {
-      // stop loading after 1 second
       setIsLoading(false);
-    }, 1000);
-
-    // cleanup function
+    }, 1000); // 1-second loading simulation
     return () => clearTimeout(timer);
   }, []);
 
@@ -36,7 +39,7 @@ function Properties() {
     <div className="container mt-5">
       <h2 className="fw-bold mb-4 text-center">All Properties</h2>
       
-      {/* search bar section */}
+      {/* Search Bar */}
       <div className="row justify-content-center mb-5">
         <div className="col-md-6">
           <input 
@@ -49,10 +52,8 @@ function Properties() {
         </div>
       </div>
       
-      {/* grid for filtered cards or loading spinner */}
+      {/* Property Cards Grid */}
       <div className="row g-4 mb-5">
-        
-        {/* conditional rendering based on loading state */}
         {isLoading ? (
           <div className="text-center mt-5">
             <div className="spinner-border text-primary" role="status">
@@ -68,7 +69,7 @@ function Properties() {
                 title={p.title} 
                 location={p.location} 
                 price={p.price} 
-                bgColor={p.bgColor} 
+                image={p.image} /* Passing the imported image */
               />
             </div>
           ))
@@ -78,7 +79,6 @@ function Properties() {
             <p>Try searching for a different location like "College Road".</p>
           </div>
         )}
-
       </div>
     </div>
   );

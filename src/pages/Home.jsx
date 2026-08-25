@@ -1,52 +1,62 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import PropertyCard from '../components/PropertyCard';
 import './Home.css';
 
-function Home() {
-  // using useRef to directly target the search input DOM element
-  const searchInputRef = useRef(null);
+import house1 from '../assets/house1.jpg';
+import house2 from '../assets/house2.jpg';
+import house3 from '../assets/house3.jpg';
 
-  // using useEffect to run code when the component mounts
+function Home() {
+  const searchInputRef = useRef(null);
+  const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
+
   useEffect(() => {
-    // automatically focus the search bar when home page loads
     if (searchInputRef.current) {
       searchInputRef.current.focus();
     }
-  }, []); // empty dependency array means it runs only once
+  }, []);
 
-  // array for property list
+  const handleSearch = () => {
+    if (searchQuery.trim() === '') {
+      alert("Please enter a location to search!");
+    } else {
+      alert(`Searching for properties near "${searchQuery}"... Redirecting to properties page.`);
+      navigate('/properties');
+    }
+  };
+
   const properties = [
-    { id: 1, title: "Skyline Studio", location: "College Road, Nashik", price: "18,000", bgColor: "#FFD1DC" },
-    { id: 2, title: "Tech Villa", location: "Gangapur Road, Nashik", price: "35,000", bgColor: "#B0E0E6" },
-    { id: 3, title: "Cozy Home", location: "Indira Nagar, Nashik", price: "14,500", bgColor: "#E6E6FA" }
+    { id: 1, title: "Skyline Studio", location: "College Road, Nashik", price: "18,000", image: house1 },
+    { id: 2, title: "Tech Villa", location: "Gangapur Road, Nashik", price: "35,000", image: house2 },
+    { id: 3, title: "Cozy Home", location: "Indira Nagar, Nashik", price: "14,500", image: house3 }
   ];
 
   return (
     <div>
-      {/* hero section */}
       <div className="hero-box text-center">
         <h1 className="fw-bold text-dark">Find Your Dream Space</h1>
         <p className="text-muted mb-4">Verified rental properties in Nashik.</p>
         
-        {/* search box */}
         <div className="search-bar shadow-sm d-flex mx-auto bg-white p-2 rounded-pill">
           <input 
             type="text" 
             className="form-control border-0 shadow-none ps-3" 
             placeholder="Search location..." 
-            ref={searchInputRef} /* attached the ref here */
+            ref={searchInputRef}
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <button className="btn btn-primary rounded-pill px-4">Search</button>
+          <button onClick={handleSearch} className="btn btn-primary rounded-pill px-4">
+            Search
+          </button>
         </div>
       </div>
 
-      {/* properties list */}
       <div className="container mt-5 mb-5">
         <h3 className="fw-bold text-center mb-4">Trending Properties</h3>
-        
-        {/* bootstrap grid */}
         <div className="row g-4">
-          {/* rendering cards using map */}
           {properties.map((p) => (
             <div className="col-md-4" key={p.id}>
               <PropertyCard 
@@ -54,7 +64,7 @@ function Home() {
                 title={p.title} 
                 location={p.location} 
                 price={p.price} 
-                bgColor={p.bgColor} 
+                image={p.image} 
               />
             </div>
           ))}
