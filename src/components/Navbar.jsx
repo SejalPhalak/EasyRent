@@ -24,15 +24,14 @@ function Navbar() {
               <Link className="nav-link text-dark" to="/">Home</Link>
             </li>
             <li className="nav-item">
-              {/* link to properties page */}
               <Link className="nav-link text-dark" to="/properties">Properties</Link>
             </li>
             <li className="nav-item">
-              {/* link to about page */}
               <Link className="nav-link text-dark" to="/about">About</Link>
             </li>
             <li className="nav-item">
-              <button className="btn btn-primary rounded-pill px-4">Login</button>
+              {/* updated login button to act as a router link */}
+              <Link to="/login" className="btn btn-primary rounded-pill px-4">Login</Link>
             </li>
           </ul>
         </div>
