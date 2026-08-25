@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './PropertyCard.css';
 
-function PropertyCard({ title, location, price, bgColor }) {
+// added id as a prop
+function PropertyCard({ id, title, location, price, bgColor }) {
   return (
     // bootstrap card
     <div className="card custom-card shadow-sm border-0">
@@ -19,7 +21,11 @@ function PropertyCard({ title, location, price, bgColor }) {
         {/* price and button row */}
         <div className="d-flex justify-content-between align-items-center mt-3">
           <h5 className="text-primary fw-bold mb-0">₹{price}<span className="fs-6 text-muted">/mo</span></h5>
-          <button className="btn btn-outline-primary btn-sm px-3 rounded-pill">View</button>
+          
+          {/* updated button to Link to navigate to details page */}
+          <Link to={`/property/${id}`} className="btn btn-outline-primary btn-sm px-3 rounded-pill">
+            View
+          </Link>
         </div>
       </div>
 

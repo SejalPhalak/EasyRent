@@ -7,6 +7,7 @@ import Properties from './pages/Properties';
 import About from './pages/About';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import PropertyDetails from './pages/PropertyDetails'; // imported new page
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -20,9 +21,11 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/properties" element={<Properties />} />
           <Route path="/about" element={<About />} />
-          {/* added authentication routes */}
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          
+          {/* route with dynamic id parameter */}
+          <Route path="/property/:id" element={<PropertyDetails />} />
         </Routes>
       </div>
 
