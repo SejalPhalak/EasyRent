@@ -1,0 +1,22 @@
+.brand-text {
+  letter-spacing: -1px;
+}
+
+.custom-link {
+  color: #4a4a4a !important;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.custom-link:hover {
+  color: #0d6efd !important;
+}
+
+.login-btn {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(13, 110, 253, 0.3) !important;
+}

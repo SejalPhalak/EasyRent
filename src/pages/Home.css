@@ -1,0 +1,9 @@
+.hero-box {
+  background-color: #f8f9fa;
+  padding: 80px 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.search-bar {
+  max-width: 500px;
+}
